@@ -1,0 +1,5 @@
+{
+  "name": "react-native-reanimated-dom",
+  "private": true,
+  "main": "lib/REAModule.js"
+}

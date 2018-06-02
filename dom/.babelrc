@@ -1,0 +1,23 @@
+{
+  "presets": ["flow"],
+  "plugins": [
+    "syntax-trailing-function-commas",
+    "transform-object-rest-spread",
+    "transform-decorators-legacy",
+    "transform-class-properties",
+    [
+      "transform-runtime",
+      {
+        "helpers": true,
+        "polyfill": false,
+        "regenerator": true
+      }
+    ],
+    [
+      "babel-plugin-transform-builtin-classes",
+      {
+        "globals": ["HTMLElement"]
+      }
+    ]
+  ]
+}
