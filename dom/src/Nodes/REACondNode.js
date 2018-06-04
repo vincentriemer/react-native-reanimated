@@ -21,7 +21,7 @@ export class REACondNode extends REANode {
 
     const cond = nodesManager.findNodeById(this.condNodeID).value();
 
-    if (typeof cond === 'number') {
+    if (cond) {
       return nodesManager.findNodeById(this.ifBlockID).value();
     }
 

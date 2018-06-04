@@ -17,7 +17,7 @@ export class REAEventNode extends REANode {
 
   processEvent(event: RCTEvent) {
     const nodesManager = getNodesManager(this);
-    const args = event.arguments;
+    const args = event.arguments();
     // argMapping is an array of eventPaths, each even path ends with a target node ID
     for (let eventPath of this.argMapping) {
       // Supported events args are in the following order: viewTag, eventName, eventData.

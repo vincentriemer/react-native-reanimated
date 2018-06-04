@@ -104,6 +104,10 @@ class REAModule extends RCTEventEmitter {
 
   // -- RCTUIManagerObserver
 
+  uiManagerWillFlushBlocks = (uiManager: RCTUIManager) => {
+    this.uiManagerWillPerformMounting(uiManager);
+  };
+
   uiManagerWillPerformMounting(uiManager: RCTUIManager) {
     if (this.operations.length === 0) return;
 

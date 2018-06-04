@@ -20,6 +20,10 @@ export class REAStyleNode extends REANode {
       const propNode = nodesManager.findNodeById(this.styleConfig[prop]);
       styles[prop] = propNode.value();
     }
+    if (styles.hasOwnProperty('transform')) {
+      styles.animatedTransform = styles.transform;
+      delete styles.transform;
+    }
     return styles;
   }
 }

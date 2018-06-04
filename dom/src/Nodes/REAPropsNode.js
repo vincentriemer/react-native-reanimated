@@ -51,8 +51,8 @@ export class REAPropsNode extends REANode {
       }
     }
 
-    let connectedViewTag;
-    if ((connectedViewTag = this.connectedViewTag) != null) {
+    const connectedViewTag = this.connectedViewTag;
+    if (connectedViewTag != null) {
       if (Object.keys(nativeProps).length > 0) {
         nodesManager.uiManager &&
           nodesManager.uiManager.synchronouslyUpdateView(

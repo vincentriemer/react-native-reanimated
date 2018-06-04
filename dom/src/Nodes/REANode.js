@@ -77,7 +77,7 @@ export class REANode {
       `REANode with id ${this.nodeID} has no updateContext or nodesManager`
     );
     updateContext.updatedNodes.push(this);
-    // TODO: nodesManager.postRunUpdatesAfterAnimation();
+    nodesManager.postRunUpdatesAfterAnimation();
   }
 
   static findAndUpdateNodes(node: REANode, visitedNodes: Set<REANode>) {

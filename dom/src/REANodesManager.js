@@ -6,6 +6,22 @@ import type REAModule, { Config } from './REAModule';
 
 import { REAPropsNode } from './Nodes/REAPropsNode';
 import { REAEventNode } from './Nodes/REAEventNode';
+import { REAStyleNode } from './Nodes/REAStyleNode';
+import { REATransformNode } from './Nodes/REATransformNode';
+import { REAValueNode } from './Nodes/REAValueNode';
+import { REABlockNode } from './Nodes/REABlockNode';
+import { REACondNode } from './Nodes/REACondNode';
+import { REAOperatorNode } from './Nodes/REAOperatorNode';
+import { REASetNode } from './Nodes/REASetNode';
+import { READebugNode } from './Nodes/READebugNode';
+import {
+  REAClockNode,
+  REAClockStartNode,
+  REAClockStopNode,
+  REAClockTestNode,
+} from './Nodes/REAClockNodes';
+import { REAJSCallNode } from './Nodes/REAJSCallNode';
+import { REABezierNode } from './Nodes/REABezierNode';
 
 export type RCTEvent = Object;
 type REAOnAnimationCallback = () => void;
@@ -106,7 +122,24 @@ export class REANodesManager {
   _nodeTypeMap: ?{ [type: string]: Class<REANode> };
   get nodeTypeMap(): { [type: string]: Class<REANode> } {
     if (!this._nodeTypeMap) {
-      this._nodeTypeMap = {};
+      this._nodeTypeMap = {
+        props: REAPropsNode,
+        style: REAStyleNode,
+        transform: REATransformNode,
+        value: REAValueNode,
+        block: REABlockNode,
+        cond: REACondNode,
+        op: REAOperatorNode,
+        set: REASetNode,
+        debug: READebugNode,
+        clock: REAClockNode,
+        clockStart: REAClockStartNode,
+        clockStop: REAClockStopNode,
+        clockTest: REAClockTestNode,
+        call: REAJSCallNode,
+        bezier: REABezierNode,
+        event: REAEventNode,
+      };
     }
     return this._nodeTypeMap;
   }
@@ -200,6 +233,10 @@ export class REANodesManager {
   }
 
   configureNativeProps(nativeProps: Set<string>) {
+    if (nativeProps.has('transform')) {
+      nativeProps.delete('transform');
+      nativeProps.add('animatedTransform');
+    }
     this.nativeProps = nativeProps;
   }
 }

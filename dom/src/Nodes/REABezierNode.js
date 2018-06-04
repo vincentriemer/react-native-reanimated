@@ -7,7 +7,7 @@ import { getNodesManager } from './utils';
 
 const EPS = 1e-5;
 
-class REABezierNode extends REANode {
+export class REABezierNode extends REANode {
   inputNodeID: number;
 
   ax: number;
